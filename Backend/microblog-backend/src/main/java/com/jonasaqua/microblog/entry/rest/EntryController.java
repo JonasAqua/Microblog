@@ -26,4 +26,9 @@ public class EntryController {
     public Entry post(@RequestBody Entry entry) {
         return service.postEntry(entry.getTitle(), entry.getContent());
     }
+
+    @GetMapping("/{id}")
+    public Entry getById(@PathVariable(name = "id") Long id) {
+        return service.getEntry(id);
+    }
 }

@@ -10,5 +10,6 @@ It has:
 - Content
 #### Actions
 You can:
-- Retrieve all blog posts (MOCKED)
-- Retrieve a specific blog post (TODO)
+- Retrieve all blog posts (IMPLEMENTED)
+- Retrieve a specific blog post (IMPLEMENTED)
+- Post a blog post (IMPLEMENTED WITHOUT AUTHENTICATION)

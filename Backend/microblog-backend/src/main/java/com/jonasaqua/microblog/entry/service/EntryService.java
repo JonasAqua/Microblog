@@ -2,6 +2,7 @@ package com.jonasaqua.microblog.entry.service;
 
 import com.jonasaqua.microblog.entry.persistence.Entry;
 import com.jonasaqua.microblog.entry.persistence.EntryRepository;
+import com.jonasaqua.microblog.exceptions.EntryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,10 @@ public class EntryService {
 
     public List<Entry> getAllEntries() {
         return repository.findAll();
+    }
+
+    public Entry getEntry(Long id) {
+        return repository.findById(id).orElseThrow(() -> new EntryNotFoundException(id));
     }
 
     public Entry postEntry(String title, String content) {
