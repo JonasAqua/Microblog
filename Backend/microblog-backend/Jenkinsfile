@@ -3,7 +3,12 @@
 def BACKEND_DIR = 'Backend/microblog-backend'
 
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3-alphine'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -15,6 +20,11 @@ pipeline {
             steps {
                 dir(BACKEND_DIR) {
                     sh 'mvn test'
+                }
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
